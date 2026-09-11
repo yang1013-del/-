@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#163b30" />
+    <title>春华秋实｜秋招小助手</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <p class="eyebrow">秋招小助手</p>
+            <h1>春华秋实</h1>
+          </div>
+        </div>
+
+        <div class="season-note">
+          <span class="season-note__dot"></span>
+          <div>
+            <strong>2026 秋招季</strong>
+            <small>慢一点，把每一步走稳</small>
+          </div>
+        </div>
+
+        <nav class="primary-nav" aria-label="主要导航">
+          <button class="nav-item is-active" data-view="dashboard">
+            <span class="nav-icon">01</span>
+            <span>今日工作台</span>
+          </button>
+          <button class="nav-item" data-view="jobs">
+            <span class="nav-icon">02</span>
+            <span>岗位库</span>
+            <span class="nav-count" id="jobCountBadge">08</span>
+          </button>
+          <button class="nav-item" data-view="tracking">
+            <span class="nav-icon">03</span>
+            <span>投递追踪</span>
+          </button>
+          <button class="nav-item" data-view="reviews">
+            <span class="nav-icon">04</span>
+            <span>面试复盘</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="progress-ring" aria-label="本周节奏完成度">
+            <span>68%</span>
+          </div>
+          <div>
+            <strong>本周节奏</strong>
+            <small>完成 17 / 25 项</small>
+          </div>
+          <button class="icon-button sidebar-settings" title="设置" aria-label="设置">⋯</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb">
+            <span>星期五</span>
+            <i>·</i>
+            <strong>2026年09月11日</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="topbar-link" id="focusModeButton"><span class="sun-dot"></span>专注模式</button>
+            <button class="avatar" title="个人资料">林</button>
+          </div>
+        </header>
+
+        <section class="view-panel is-visible" data-panel="dashboard">
+          <div class="page-intro dashboard-intro">
+            <div>
+              <p class="section-kicker">DAY 32 / 秋招进度</p>
+              <h2>今天也要，把好消息往前推一点。</h2>
+              <p class="intro-copy">把重要的事排在前面，剩下的交给节奏。你已经在正确的路上。</p>
+            </div>
+            <button class="primary-button" data-action="open-todo-form">
+              <span>+</span>
+              添加今日待办
+            </button>
+          </div>
+
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="dashboard-grid">
+            <section class="surface-panel countdown-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="section-kicker">NEXT DEADLINE</p>
+                  <h3>最近的 DDL</h3>
+                </div>
+                <button class="text-button" data-view-link="jobs">查看岗位库 <span>↗</span></button>
+              </div>
+              <div class="deadline-feature">
+                <div class="deadline-date">
+                  <span class="deadline-date__month">SEP</span>
+                  <strong>15</strong>
+                  <span>周二</span>
+                </div>
+                <div class="deadline-info">
+                  <div class="deadline-title-row">
+                    <h4>字节跳动 · 产品运营</h4>
+                    <span class="deadline-badge">笔试</span>
+                  </div>
+                  <p>今晚 23:59 前完成在线测评，别忘了预留 90 分钟。</p>
+                  <div class="deadline-progress">
+                    <div><span style="width: 72%"></span></div>
+                    <em>还剩 <b>3天 08时</b></em>
+                  </div>
+                </div>
+              </div>
+              <div class="deadline-list">
+                <div class="deadline-list-item">
+                  <span class="deadline-list-date">09.18</span>
+                  <span>小红书 · 内容策略</span>
+                  <span class="muted">面试一面</span>
+                </div>
+                <div class="deadline-list-item">
+                  <span class="deadline-list-date">09.23</span>
+                  <span>美团 · 用户增长</span>
+                  <span class="muted">笔试</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="surface-panel todo-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="section-kicker">TODAY'S LIST</p>
+                  <h3>今日待办</h3>
+                </div>
+                <span class="todo-complete-label" id="todoCompleteLabel">2 / 4 完成</span>
+              </div>
+              <div class="todo-list" id="todoList"></div>
+              <button class="add-line-button" data-action="open-todo-form"><span>+</span> 新增一项</button>
+            </section>
+          </div>
+
+          <div class="dashboard-bottom-grid">
+            <section class="surface-panel pulse-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="section-kicker">APPLICATION PULSE</p>
+                  <h3>投递节奏</h3>
+                </div>
+                <span class="period-label">近 30 天</span>
+              </div>
+              <div class="pulse-chart" aria-label="近30天投递节奏图">
+                <div class="chart-y-axis"><span>12</span><span>8</span><span>4</span><span>0</span></div>
+                <div class="bars">
+                  <div class="bar-group"><span class="bar bar-muted" style="height: 23%"></span><small>08.15</small></div>
+                  <div class="bar-group"><span class="bar bar-muted" style="height: 39%"></span><small>08.19</small></div>
+                  <div class="bar-group"><span class="bar bar-amber" style="height: 56%"></span><small>08.23</small></div>
+                  <div class="bar-group"><span class="bar bar-green" style="height: 78%"></span><small>08.27</small></div>
+                  <div class="bar-group"><span class="bar bar-green" style="height: 44%"></span><small>08.31</small></div>
+                  <div class="bar-group"><span class="bar bar-green" style="height: 91%"></span><small>09.04</small></div>
+                  <div class="bar-group"><span class="bar bar-green" style="height: 69%"></span><small>09.08</small></div>
+                  <div class="bar-group"><span class="bar bar-amber" style="height: 36%"></span><small>09.11</small></div>
+                </div>
+              </div>
+              <div class="chart-summary">
+                <span><i class="legend-dot legend-green"></i>这周投递 <strong>11</strong></span>
+                <span><i class="legend-dot legend-amber"></i>较上周 <strong class="up-arrow">+24%</strong></span>
+              </div>
+            </section>
+
+            <section class="surface-panel insight-panel">
+              <div class="insight-tag">AI 小提示 · 09:10</div>
+              <h3>你最近在“用户洞察”类问题上表现稳定。</h3>
+              <p>把昨天复盘里的案例，整理成一段 90 秒的 STAR 版本，明天面试可以直接复用。</p>
+              <button class="text-button" data-view-link="reviews">去看看复盘 <span>→</span></button>
+              <div class="insight-scribble">Keep going<br />you’re close.</div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="jobs">
+          <div class="page-intro">
+            <div>
+              <p class="section-kicker">OPPORTUNITY LIBRARY</p>
+              <h2>岗位库</h2>
+              <p class="intro-copy">把心仪的机会收进来，逐个判断，逐个准备。</p>
+            </div>
+            <button class="primary-button" data-action="open-job-form"><span>+</span> 添加岗位</button>
+          </div>
+          <div class="filter-bar">
+            <label class="search-field">
+              <span>⌕</span>
+              <input id="jobSearchInput" type="search" placeholder="搜索公司、岗位或关键词" />
+            </label>
+            <select id="cityFilter" aria-label="筛选城市">
+              <option value="all">城市 · 全部</option>
+            </select>
+            <select id="industryFilter" aria-label="筛选行业">
+              <option value="all">行业 · 全部</option>
+            </select>
+            <select id="roleFilter" aria-label="筛选岗位">
+              <option value="all">方向 · 全部</option>
+            </select>
+            <span class="filter-result" id="filterResult">8 个岗位</span>
+          </div>
+          <div class="jobs-layout">
+            <div class="job-list" id="jobList"></div>
+            <aside class="job-detail-panel" id="jobDetailPanel"></aside>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="tracking">
+          <div class="page-intro">
+            <div>
+              <p class="section-kicker">APPLICATION PIPELINE</p>
+              <h2>投递追踪</h2>
+              <p class="intro-copy">每一步都算数。知道自己走到哪里，也知道下一步要做什么。</p>
+            </div>
+            <button class="secondary-button" data-action="open-job-form">管理岗位 <span>↗</span></button>
+          </div>
+          <div class="funnel-strip" id="funnelStrip"></div>
+          <section class="surface-panel tracking-panel">
+            <div class="tracking-toolbar">
+              <div>
+                <h3>我的投递进展</h3>
+                <p>点击节点更新当前流程，已完成的步骤会自动记录。</p>
+              </div>
+              <label class="compact-search"><span>⌕</span><input id="trackingSearchInput" placeholder="筛选投递记录" /></label>
+            </div>
+            <div class="tracking-table-wrap">
+              <table class="tracking-table">
+                <thead>
+                  <tr>
+                    <th>岗位</th>
+                    <th>投递日期</th>
+                    <th>当前进度</th>
+                    <th>状态</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="trackingTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="view-panel" data-panel="reviews">
+          <div class="page-intro review-intro">
+            <div>
+              <p class="section-kicker">INTERVIEW MEMORY</p>
+              <h2>面试复盘库</h2>
+              <p class="intro-copy">趁热写下来，下一次就不会从同一个坑里经过。</p>
+            </div>
+            <button class="primary-button" data-action="focus-review-form"><span>+</span> 记录一次复盘</button>
+          </div>
+          <div class="review-layout">
+            <section class="surface-panel review-form-panel" id="reviewFormPanel">
+              <div class="panel-heading">
+                <div>
+                  <p class="section-kicker">QUICK CAPTURE</p>
+                  <h3>刚刚被问了什么？</h3>
+                </div>
+                <span class="form-tip">建议 3 分钟内完成</span>
+              </div>
+              <form id="reviewForm">
+                <label class="form-label">面试岗位
+                  <select id="reviewJobSelect" required></select>
+                </label>
+                <label class="form-label">面试问题
+                  <textarea id="reviewQuestion" rows="3" placeholder="例如：如果让你提升一款内容产品的次日留存，你会怎么做？" required></textarea>
+                </label>
+                <label class="form-label">我的回答
+                  <textarea id="reviewAnswer" rows="4" placeholder="把当时说过的话先原样记下来，不用润色。" required></textarea>
+                </label>
+                <label class="form-label">哪里回答崩了？
+                  <textarea id="reviewCrash" rows="2" placeholder="例如：说了很多方法，但没有先澄清目标和指标。"></textarea>
+                </label>
+                <div class="form-footer">
+                  <span class="privacy-note">⌁ 仅保存在本机浏览器</span>
+                  <button type="submit" class="primary-button">保存并获取 AI 点评</button>
+                </div>
+              </form>
+            </section>
+            <section class="surface-panel diagnosis-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="section-kicker">FUNNEL DIAGNOSIS</p>
+                  <h3>漏斗诊断</h3>
+                </div>
+                <span class="ai-chip">AI ANALYSIS</span>
+              </div>
+              <div class="diagnosis-score">
+                <div class="score-number">72<span>/100</span></div>
+                <div>
+                  <strong>基础扎实，表达还可以更聚焦</strong>
+                  <p>根据近 4 次复盘生成</p>
+                </div>
+              </div>
+              <div class="diagnosis-bars">
+                <div><span>问题拆解</span><div><i style="width: 84%"></i></div><b>84</b></div>
+                <div><span>案例表达</span><div><i style="width: 66%"></i></div><b>66</b></div>
+                <div><span>数据意识</span><div><i style="width: 58%"></i></div><b>58</b></div>
+                <div><span>结果复盘</span><div><i style="width: 77%"></i></div><b>77</b></div>
+              </div>
+              <div class="diagnosis-callout">
+                <span>↗</span>
+                <p><strong>优先补强：</strong>在回答结尾补一句“结果如何被验证”，你的案例会更完整。</p>
+              </div>
+            </section>
+          </div>
+          <div class="review-history" id="reviewHistory"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" aria-label="关闭">×</button>
+        <p class="section-kicker" id="modalKicker">QUICK EDIT</p>
+        <h3 id="modalTitle">添加一项待办</h3>
+        <form id="modalForm"></form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
